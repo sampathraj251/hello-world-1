@@ -1,3 +1,4 @@
+currentBuild.displayName = "Girmiti-app#"+currentBuild.number
 pipeline {
     agent any
     environment {
