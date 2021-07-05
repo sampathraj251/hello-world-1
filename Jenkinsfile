@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        PATH = "/opt/apache-maven-3.6.3/bin:$PATH"
+        PATH = "/opt/maven/bin:$PATH"
     }
     stages {
         stage("clone code"){
@@ -16,8 +16,8 @@ pipeline {
         }
         stage("deploy"){
             steps{
-              sshagent(['deploy_user']) {
-                 sh "scp -o StrictHostKeyChecking=no webapp/target/webapp.war ec2-user@13.229.183.126:/opt/apache-tomcat-8.5.55/webapps"
+              sshagent(['tomcat-New'])  {
+                 sh "scp -o StrictHostKeyChecking=no webapp/target/webapp.war ec2-user@13.127.81.125:/opt/tomcat/webapps"
                  
                 }
             }
